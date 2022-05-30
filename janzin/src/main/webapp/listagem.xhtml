@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Listagem</title>
+</h:head>
+<h:body>
+	<h:form id="lista">
+	<h:panelGroup>
+	<p:dataTable value="#{jogoBean.listar}" var="c">
+		<p:column headerText="IDkKKK">
+						<h:outputText value="#{c.id}" />
+					</p:column>
+				<p:column headerText="data">
+				<h:outputText value="#{session.lastAccessedTime}">
+      <f:convertDateTime pattern="MM/dd/yyyy" type="date" />
+</h:outputText>
+				
+				</p:column>
+						<p:column headerText="numeroskkk">
+				<h:outputText value="#{c.v1}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v2}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v3}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v4}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v5}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v6}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v7}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v8}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v9}" />
+				<h:outputText value="-" />
+				<h:outputText value="#{c.v10}" />
+			</p:column>
+			<p:column headerText="descrição">
+				<h:outputText value="#{c.descricao}" />
+			</p:column>
+			
+					<p:column headerText="Data de criação">
+						<h:outputText value="#{c.dataCriacao}" />
+					</p:column>
+					
+					<p:column headerText="editar">
+				<p:commandButton value="editar" action="edicao">
+			<f:setPropertyActionListener value="#{c}" target="#{jogoBean.jogo}"></f:setPropertyActionListener>
+				</p:commandButton>
+				<p:commandButton value="excluir" action="#{jogoBean.excluir}" update="lista">
+				<f:setPropertyActionListener value="#{c}" target="#{jogoBean.jogo}"></f:setPropertyActionListener>
+				
+				</p:commandButton>
+				<p:commandButton value="pares" type="button" onclick="PF('dlg1').show();" />
+				<p:dialog header="pares" widgetVar="dlg1" minHeight="40">
+  				  <h:outputText value="é par ter pares aqui" />
+				</p:dialog>
+			</p:column>
+			
+			
+								
+								
+								
+</p:dataTable>		
+
+</h:panelGroup>
+	<p:link  outcome="index" value="index" />
+
+
+	</h:form>
+
+
+
+
+</h:body>
+</html>
